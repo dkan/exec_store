@@ -1,0 +1,8 @@
+<div class="hero-unit">
+    <%= render 'layouts/hoodie' if session[:current_hoodie] != nil && ExecStore::Application::HOODIE_LIMIT - Order.count >= 1 %>
+    <%= render 'layouts/pick_hoodie' if session[:current_hoodie] == nil && ExecStore::Application::HOODIE_LIMIT - Order.count >= 1 %>
+    <%= render 'layouts/sold_out' if ExecStore::Application::HOODIE_LIMIT - Order.count <= 0 %>
+</div>
+<br>				
+
+<%= render 'layouts/order_form' if ExecStore::Application::HOODIE_LIMIT - Order.count >= 1 %>

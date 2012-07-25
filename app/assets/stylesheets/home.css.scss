@@ -1,0 +1,31 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'bootstrap';
+
+.errors{
+	color: red;
+}
+
+.form-row{
+	//float:left;
+	padding-right:20px;
+	padding-bottom:10px;
+}
+
+div.message{
+    padding-left: 7px;
+	color: red;
+}
+
+div.error{
+    padding: 5px;
+}
+
+.thumbnail{
+	margin: 10px 10px;
+}
+
+.btn{
+	margin-top: 30px;
+}

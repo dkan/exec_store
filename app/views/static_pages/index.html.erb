@@ -1,0 +1,24 @@
+<div class="hero-unit">
+    <%= render 'layouts/sold_out' if ExecStore::Application::HOODIE_LIMIT - Order.count <= 0 %>
+    <%= render 'layouts/front_page' if ExecStore::Application::HOODIE_LIMIT - Order.count > 1 %>
+    <%= render 'layouts/front_page_one'if ExecStore::Application::HOODIE_LIMIT - Order.count == 1 %>
+</div>
+
+<div class="span12">
+    <hr>
+</div>
+
+<div class="row">
+    <div class="span4">
+            <%= image_tag 'dino_front.jpg', :class => 'thumbnail', :height => "250" %>
+    </div>
+    <div class="span8">
+        <h2>Support your favorite service!</h2><br>
+        <p>Show the EXECs how much you support them by purchasing one of our customized promotional hoodies. Spread the word by rocking the most stylish hoodie around. You can show your support and look amazing while you do it.</p>
+        <p>This is a one time promotional item, so don't miss out on the hoodie extravaganza.</p><br>
+        <h2>Handcrafted by an EXEC.</h2><br>
+        <p>These hoodies aren't stitched together by just anyone. They are H&M hoodies... BUT, the details are hand stitched to the hoodie by an EXEC that cares about how the hoodies look. They are putting their tender love and care into crafting these, and you get to reap the rewards.</p>
+    <br><p><a class="btn btn-primary btn-large" href="/hoodies">Check out the hoodie &raquo;</a></p>
+    </div>
+    
+</div>

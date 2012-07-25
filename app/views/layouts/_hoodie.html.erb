@@ -1,0 +1,18 @@
+<h1>Purchase your Hoodie!</h1><br>
+<h2>These are the options you chose:</h2><br>
+<div class="row">
+    <div class="span6">
+        <p>
+            <%= "Primary: #{session[:current_hoodie].color1}"%>
+        </p>
+        <p>
+            <%= "Secondary: #{session[:current_hoodie].color2}"%>
+        </p>
+        <p>
+            <%= "Size: #{session[:current_hoodie].size}"%>
+        </p>
+
+        <%= link_to "Choose different options", 'hoodies', :class => "btn btn-medium btn-primary"%>
+    </div>
+
+</div>

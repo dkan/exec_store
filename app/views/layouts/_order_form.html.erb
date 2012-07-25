@@ -1,0 +1,100 @@
+<%= form_for(@order) do |f| %>
+<%= render 'layouts/error_messages', object: f.object %>
+<div class="row">
+    <div class="span5">    
+        <h2>Billing Address</h2><br>
+        <p>
+            <label>Name</label>
+            <%= f.text_field(:billing_name) %>
+        </p>
+        <p>
+            <label>Email</label>
+            <%= f.text_field(:email) %>
+        </p>
+        <p>
+            <label>Address 1</label>
+            <%= f.text_field(:billing_address1)%>
+        </p>
+        <p>
+            <label>Address 2</label>
+            <%= f.text_field(:billing_address2)%>
+        </p>
+        <p>
+            <label>City</label>
+            <%= f.text_field(:billing_city) %>
+        </p>
+        <p>
+            <label>State</label>
+            <%= f.text_field(:billing_state, class: "span1") %>
+        </p>
+        <p>
+            <label>Zip</label>
+            <%= f.text_field(:billing_zip, class: "span1") %>
+        </p>
+        <light>If you want your hoodie shipped to a different location, fill out the shipping address too.</light>
+    </div>
+    <div class="span5">
+        <h2>Shipping Address</h2><br>
+        <p>
+            <label>Name</label>
+            <%= f.text_field(:shipping_name) %>
+        </p>
+        <p>
+            <label>Address 1</label>
+            <%= f.text_field(:shipping_address1)%>
+        </p>
+        <p>
+            <label>Address 2</label>
+            <%= f.text_field(:shipping_address2)%>
+        </p>
+        <p>
+            <label>City</label>
+            <%= f.text_field(:shipping_city) %>
+        </p>
+        <p>
+            <label>State</label>
+            <%= f.text_field(:shipping_state, class: "span1") %>
+        </p>
+
+        <p>
+            <label>Zip</label>
+            <%= f.text_field(:shipping_zip, class: "span1") %>
+        </p>
+        <p>
+            <%= f.hidden_field(:stripe_token) %>
+        </p>
+    </div>
+</div>
+
+
+<!---->
+
+        <br><h2>Card Information</h2><br>
+<div class="row">
+    <div class="span6">
+        <p>
+            <%= label_tag :card_number, "Credit Card Number" %>
+            <%= text_field_tag :card_number, nil, name: nil %>
+        </p>
+        <p>
+            <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+            <%= text_field_tag :card_code, nil, name: nil, class: "span1" %>
+        </p>
+        <p>
+            <%= label_tag :card_month, "Card Expiration" %>
+            <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", class: "span2"} %>
+            <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class: "span1"} %>
+        </p>
+        <div id="stripe_error">
+            <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+        </div>
+
+<!---->
+        <%= f.submit "Place Order", class: "btn btn-large btn-primary", id: "submit-button"%>
+        <% end %>
+    </div>
+    <div class="span5">
+        <h3>Item cost:</h3>
+        <h1 class="dollars">$100.00</h1>
+    </div>
+</div>

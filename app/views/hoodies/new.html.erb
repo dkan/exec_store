@@ -1,0 +1,24 @@
+<div class="row">
+    <br><h1>Check out the Hoodie</h1><br>
+    
+    <div class="span4">
+        <p>
+            <%= link_to (image_tag 'phonea.jpg', :class => 'thumbnail', :height => "200"), '/assets/phoneb.jpg' , :class => 'fancybox' %>
+        </p>
+            <%= link_to (image_tag 'profilea.jpg', :class => 'thumbnail', :height => "200"), '/assets/profileb.jpg' , :class => 'fancybox' %>
+        </p>
+
+    </div>
+    <div class="span4">
+        <p>
+            <%= link_to (image_tag 'straighta.jpg', :class => 'thumbnail', :height => "200"), '/assets/straightb.jpg' , :class => 'fancybox' %>
+        </p>
+            <%= link_to (image_tag 'rawra.jpg', :class => 'thumbnail', :height => "200"), '/assets/rawrb.jpg' , :class => 'fancybox' %>
+        </p>
+
+    </div>
+    <%= render 'layouts/hoodie_form' if ExecStore::Application::HOODIE_LIMIT - Order.count > 0 %>
+    <%= render 'layouts/hoodie_form_gone' if ExecStore::Application::HOODIE_LIMIT - Order.count <= 0 %>
+</div>
+
+

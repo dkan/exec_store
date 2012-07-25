@@ -1,0 +1,44 @@
+<div class="span4">
+    <h2>You could look this awesome too.</h2><p><br>
+    <h3><p>There are only a few more steps</p></h3>
+</div>
+<div class="row">
+    <div class="span1"><br>
+        <p><number>1</number></p>
+        <p><number>2</number></p>
+        <p><number>3</number></p>
+    </div>
+    <div class="span3" style="margin-left:-10px;" >
+    <br>
+
+    
+        <%= form_for(@hoodie) do |f| %>
+        <p>
+            <label>Hoodie Color<light> (subject to availability)</light></label>
+            <div id="green" class="colors"><a><img src="./assets/green.png" id="greenimg"></a></div>
+            <div id="blue" class="colors"><a><img src="./assets/blue.png" id="blueimg"></a></div>
+            <div id="red" class="colors"><a><img src="./assets/red.png" id="redimg"></a></div>
+            <div id="yellow" class="colors"><a><img src="./assets/yellow.png" id="yellowimg"></a></div>
+            <div id="black" class="colors"><a><img src="./assets/black.png" id="blackimg"></a></div><br><br>
+            <%= f.hidden_field(:color1) %>
+        </p>
+        <p>
+            <label>Spike Color</label>
+            <div id="green2" class="colors"><a><img src="./assets/green2.png" id="greenimg2"></a></div>
+            <div id="blue2" class="colors"><a><img src="./assets/blue2.png" id="blueimg2"></a></div>
+            <div id="red2" class="colors"><a><img src="./assets/red2.png" id="redimg2"></a></div>
+            <div id="yellow2" class="colors"><a><img src="./assets/yellow2.png" id="yellowimg2"></a></div>
+            <div id="pink2" class="colors"><a><img src="./assets/pink2.png" id="pinkimg2"/></a></div>
+            <div id="purple2" class="colors"><a><img src="./assets/purple2.png" id="purpleimg2"></a></div><br><br>
+            <%= f.hidden_field(:color2) %>
+        </p>
+        <p>
+            <label>Size<light> (these are in men's sizes)</light></label>
+            <%= f.select(:size, size, :prompt => 'Pick a size') %>
+        </p>  
+
+        <%= f.submit "Choose Hoodie", class: "btn btn-large btn-primary"%>
+        <% end %>
+    </div>
+
+</div>

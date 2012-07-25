@@ -1,0 +1,16 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  activerecord:
+    attributes:
+      order:
+        stripe_token: "Credit card information"
+    errors:
+      models:
+        order:
+          attributes:
+            stripe_token:
+              blank: "is invalid"
+            hoodie:
+              blank: "needs to be chosen"

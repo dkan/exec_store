@@ -12,13 +12,17 @@ class OrdersController < ApplicationController
         end
         @order.hoodie = "#{session[:current_hoodie].color1} #{session[:current_hoodie].color2} #{session[:current_hoodie].size}" unless session[:current_hoodie] == nil
         if @order.save
-            @order.bill_customer
-            @order.email_customer
+            if @order.bill_customer
+                @order.email_customer
             
-            flash[:success] = "Thanks #{params[:order][:billing_name].split[0]} for purchasing a hoodie!"
-            session[:current_hoodie] = nil
+                flash[:success] = "Thanks #{params[:order][:billing_name].split[0]} for purchasing a hoodie!"
+                session[:current_hoodie] = nil
             
-            redirect_to thanks_path
+                redirect_to thanks_path
+            else
+               flash[:error] = "There was an error billing your credit card."
+               render "new"
+            end
         else
             render 'new'
         end

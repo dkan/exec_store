@@ -17,12 +17,18 @@ class Order < ActiveRecord::Base
                       format: { with: VALID_EMAIL_REGEX }
 
     def bill_customer
-        charge = Stripe::Charge.create(
-            :amount => 100_00, # amount in cents
-            :currency => "usd",
-            :card => stripe_token,
-            :description => "charge for #{email}"
-        )
+        begin
+            charge = Stripe::Charge.create(
+                :amount => 100_00, # amount in cents
+                :currency => "usd",
+                :card => stripe_token,
+                :description => "charge for #{email}"
+                )
+        rescue
+            self.destroy
+            return false
+        end
+        return true
     end
     
     def email_customer
@@ -34,5 +40,3 @@ class Order < ActiveRecord::Base
         :text => "Thanks #{billing_name.split[0]} for ordering a promotional hoodie!\n\nYour customized limited offer hoodie is being carefully crafted by an EXEC. It should arrive in about 6 weeks.\n\nIf you have any questions, please contact us at support@iamexec.com"
     end
 end
-
-# put it in the model and return an error

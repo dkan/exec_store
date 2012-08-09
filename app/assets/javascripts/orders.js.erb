@@ -1,0 +1,23 @@
+// # Place all the behaviors and hooks related to the matching controller here.
+// # All this logic will automatically be available in application.js.
+// # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+
+$(function() {
+	$('form#new_order').submit(function(){
+				
+		$('#submit-button').attr("disabled", "disabled");
+   		
+		Stripe.createToken({
+            number: $('#card_number').val(),
+            cvc: $('#card_code').val(),
+            exp_month: $('#card_month').val(), 
+            exp_year: $('#card_year').val()
+		}, function(status, response){
+			$('#submit-button').removeAttr("disabled");
+			$('#order_stripe_token').val(response.id);
+			$('form#new_order').get(0).submit();
+		})
+		return false;
+	})
+	
+})

@@ -17,27 +17,6 @@
 //= require fancybox
 
 
-$(function() {
-	Stripe.setPublishableKey('pk_dMC5Q71uZTQvi4ievlGkrki0h62aw');
-	$('form#new_order').submit(function(){
-				
-		$('#submit-button').attr("disabled", "disabled");
-   		
-		Stripe.createToken({
-            number: $('#card_number').val(),
-            cvc: $('#card_code').val(),
-            exp_month: $('#card_month').val(), 
-            exp_year: $('#card_year').val()
-		}, function(status, response){
-			$('#submit-button').removeAttr("disabled");
-			$('#order_stripe_token').val(response.id);
-			$('form#new_order').get(0).submit();
-		})
-		return false;
-	})
-	
-})
-
 $(document).ready(function(){
 	$("a.fancybox").fancybox({
 		'type': 'image',

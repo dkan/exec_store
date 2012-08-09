@@ -22,7 +22,7 @@ class Order < ActiveRecord::Base
                 :amount => 100_00, # amount in cents
                 :currency => "usd",
                 :card => stripe_token,
-                :description => "charge for #{email}"
+                :description => "charge for #{email} ordering a hoodie, order id: #{id}"
                 )
         rescue
             self.destroy
